@@ -7,7 +7,6 @@ function ParseArgs(e, usrPoint)
     -- Gets Index of Element and Pushes it to the Element to be Read by
     -- Arg Function Is Passed Down
 
-
     local el = StructedElement(args, 1)
 
     for event in ipairs(el) do
@@ -79,8 +78,16 @@ end
 
 
 function Setup()
-    local isRunning = false;
-    while isRunning == false do
+    local BoolCode = {
+
+        isMainLoop = (false),
+        endingSystem = (true)
+    }
+
+    local isMainThread = BoolCode.isMainLoop;
+    local Booleans = BoolCode;
+
+    while Booleans.isMainLoop == false do
         print(PrintTitle("| Git Command Pusher |"))
         print(PrintValue("Run Command for Git: "))
         local inputUser = io.read();
