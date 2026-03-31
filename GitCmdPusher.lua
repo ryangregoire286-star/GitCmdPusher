@@ -1,4 +1,29 @@
 require "Extras.ClassInfo"
+function ParseArgs(e, usrPoint)
+    local args = { e }
+
+    for event in ipairs(args[0]) do
+        if event == "Add" then
+            local systemCommands = os.execute(GetCommandRoute(2, usrPoint))
+            print(PrintValue("System Commnad" .. systemCommands))
+        end
+
+        if event == "Commit" then
+            local systemCommands = os.execute(GetCommandRoute(1, usrPoint))
+            print(PrintValue("System Commnad" .. systemCommands))
+        end
+
+        if event == "Push" then
+            local systemCommands = os.execute(GetCommandRoute(0, usrPoint))
+            print(PrintValue("System Commnad" .. systemCommands))
+        end
+
+        if event == "Clone" then
+            local systemCommands = os.execute(GetCommandRoute(3))
+            print(PrintValue("System Commnad" .. systemCommands))
+        end
+    end
+end
 
 function GetPath(cmd, usrPoint)
     if (cmd == "Push") then
