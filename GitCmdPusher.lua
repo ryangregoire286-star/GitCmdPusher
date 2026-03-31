@@ -55,6 +55,10 @@ function Setup()
         print(PrintValue("Run Command for Git: "))
         local inputUser = io.read();
 
+        if (IsEmpty(inputUser)) then
+            print(PrintValue(IsEmpty(inputUser)))
+        end
+
         print(PrintValue("Enter Path: "))
         local routeCommand = io.read()
 
@@ -62,15 +66,30 @@ function Setup()
         GetPath(inputUser, routeCommand)
         HistoryFile("history.txt", "w")
 
-
-        if (inputUser == "Example") then
-            print(PrintValue("0: ADD"));
-            print(PrintValue("1: Push"));
-            print(PrintValue("2: Commit"))
-            print(PrintValue("3: Clone"))
-        end
+        LoopKeys(inputUser)
 
         isRunning = true
+    end
+end
+
+function IsBlank(msg)
+    local msgs = msg == "";
+    return msgs;
+end
+
+function IsEmpty(message)
+    local isBlank = IsBlank(message);
+    if (isBlank) then
+        return PrintValue("User Entered Something Blank")
+    end
+end
+
+function LoopKeys(inputUser)
+    if (inputUser == "Example") then
+        print(PrintValue("0: ADD"));
+        print(PrintValue("1: Push"));
+        print(PrintValue("2: Commit"))
+        print(PrintValue("3: Clone"))
     end
 end
 
