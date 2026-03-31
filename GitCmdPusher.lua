@@ -1,5 +1,5 @@
 require "Extras.ClassInfo"
-require "Elements"
+require "Elements.Elements"
 
 function ParseArgs(e, usrPoint)
     local args = { e }
@@ -76,6 +76,13 @@ local function PrintTitle(title)
     return PrintValue(title)
 end
 
+function Uppertext(text)
+    return string.upper(text)
+end
+
+function GetName(title)
+    return "Title | " .. Uppertext(title)
+end
 
 function Setup()
     local BoolCode = {
@@ -88,7 +95,7 @@ function Setup()
     local Booleans = BoolCode;
 
     while Booleans.isMainLoop == false do
-        print(PrintTitle("| Git Command Pusher |"))
+        print(PrintTitle(GetName("| Git Command Pusher |")))
         print(PrintValue("Run Command for Git: "))
         local inputUser = io.read();
 
