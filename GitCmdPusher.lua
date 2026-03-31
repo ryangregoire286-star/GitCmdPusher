@@ -1,8 +1,16 @@
 require "Extras.ClassInfo"
+require "Elements"
+
 function ParseArgs(e, usrPoint)
     local args = { e }
 
-    for event in ipairs(args[1]) do
+    -- Gets Index of Element and Pushes it to the Element to be Read by
+    -- Arg Function Is Passed Down
+
+
+    local el = StructedElement(args, 1)
+
+    for event in ipairs(el) do
         if event == "Add" then
             local systemCommands = os.execute(GetCommandRoute(2, usrPoint))
             print(PrintValue("System Commnad" .. systemCommands))
@@ -28,26 +36,22 @@ end
 function GetPath(cmd, usrPoint)
     if (cmd == "Push") then
         local systemCommands = os.execute(GetCommandRoute(0, usrPoint))
-
         print(PrintValue("System Commnad" .. systemCommands))
     end
 
     if (cmd == "Commit") then
         local systemCommands = os.execute(GetCommandRoute(1, usrPoint))
-
         print(PrintValue("System Commnad" .. systemCommands))
     end
 
     if (cmd == "Add") then
         local systemCommands = os.execute(GetCommandRoute(2, usrPoint))
-
         print(PrintValue("System Commnad" .. systemCommands))
     end
 
 
     if (cmd == "Clone") then
         local systemCommands = os.execute(GetCommandRoute(3))
-
         print(PrintValue("System Commnad" .. systemCommands))
     end
 
@@ -72,6 +76,7 @@ end
 local function PrintTitle(title)
     return PrintValue(title)
 end
+
 
 function Setup()
     local isRunning = false;
