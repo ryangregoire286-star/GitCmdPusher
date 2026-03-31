@@ -2,7 +2,7 @@ require "Extras.ClassInfo"
 function ParseArgs(e, usrPoint)
     local args = { e }
 
-    for event in ipairs(args[0]) do
+    for event in ipairs(args[1]) do
         if event == "Add" then
             local systemCommands = os.execute(GetCommandRoute(2, usrPoint))
             print(PrintValue("System Commnad" .. systemCommands))
