@@ -1,20 +1,20 @@
-require "ClassInfo"
+require "Extras.ClassInfo"
 
-function GetPath(cmd)
+function GetPath(cmd, usrPoint)
     if (cmd == "Push") then
-        local systemCommands = os.execute(GetCommandRoute(0))
+        local systemCommands = os.execute(GetCommandRoute(0, usrPoint))
 
         print(PrintValue("System Commnad" .. systemCommands))
     end
 
     if (cmd == "Commit") then
-        local systemCommands = os.execute(GetCommandRoute(1))
+        local systemCommands = os.execute(GetCommandRoute(1, usrPoint))
 
         print(PrintValue("System Commnad" .. systemCommands))
     end
 
     if (cmd == "Add") then
-        local systemCommands = os.execute(GetCommandRoute(2))
+        local systemCommands = os.execute(GetCommandRoute(2, usrPoint))
 
         print(PrintValue("System Commnad" .. systemCommands))
     end
@@ -44,12 +44,31 @@ function GetCommandRoute(RouteCommand, path)
     }
 end
 
+local function PrintTitle(title)
+    return PrintValue(title)
+end
+
 function Setup()
     local isRunning = false;
-    while isRunning do
+    while isRunning == false do
+        print(PrintTitle("| Git Command Pusher |"))
+        print(PrintValue("Run Command for Git: "))
         local inputUser = io.read();
-        GetPath(inputUser)
+
+        print(PrintValue("Enter Path: "))
+        local routeCommand = io.read()
+
+
+        GetPath(inputUser, routeCommand)
         HistoryFile("history.txt", "w")
+
+
+        if (inputUser == "Example") then
+            print(PrintValue("0: ADD"));
+            print(PrintValue("1: Push"));
+            print(PrintValue("2: Commit"))
+            print(PrintValue("3: Clone"))
+        end
 
         isRunning = true
     end
