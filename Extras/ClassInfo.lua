@@ -9,9 +9,5 @@ function RoutesClass:new(value)
 end
 
 function RoutesClass:Print(value)
-    print(PrintValue(value))
-end
-
-function PrintValue(value)
-    return string.upper(value)
+    print(value)
 end

@@ -1,5 +1,8 @@
 {
     "Lua.diagnostics.disable": [
         "redefined-local"
+    ],
+    "Lua.diagnostics.globals": [
+        "isRunning"
     ]
 }
